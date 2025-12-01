@@ -151,6 +151,12 @@ AGENT_CONFIG = {
         "install_url": "https://ampcode.com/manual#install",
         "requires_cli": True,
     },
+    "antigravity": {
+        "name": "Google Anti-Gravity",
+        "folder": ".idx/",
+        "install_url": None,
+        "requires_cli": False,
+    },
 }
 
 SCRIPT_TYPE_CHOICES = {"sh": "POSIX Shell (bash/zsh)", "ps": "PowerShell"}
