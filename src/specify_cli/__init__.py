@@ -584,8 +584,17 @@ def merge_json_files(existing_path: Path, new_content: dict, verbose: bool = Fal
     return merged
 
 def download_template_from_github(ai_assistant: str, download_dir: Path, *, script_type: str = "sh", verbose: bool = True, show_progress: bool = True, client: httpx.Client = None, debug: bool = False, github_token: str = None) -> Tuple[Path, dict]:
-    repo_owner = "iamKhan79690"
-    repo_name = "spec-kit-plus"
+    # --- 🟢 START CONDITIONAL LOGIC ---
+    # Antigravity agent downloads from custom fork with MCP templates
+    # All other agents download from official github/spec-kit repo
+    if ai_assistant == "antigravity":
+        repo_owner = "iamKhan79690"
+        repo_name = "spec-kit-plus"
+    else:
+        repo_owner = "github"
+        repo_name = "spec-kit"
+    # --- 🔴 END CONDITIONAL LOGIC ---
+    
     if client is None:
         client = httpx.Client(verify=ssl_context)
 
